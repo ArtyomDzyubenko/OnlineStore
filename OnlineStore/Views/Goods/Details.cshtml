@@ -1,0 +1,38 @@
+﻿@model OnlineStore.Models.Goods
+
+@{
+    ViewBag.Title = "Информация";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Название
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            Описание
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            Цена
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Назад", "Index")
+</p>
