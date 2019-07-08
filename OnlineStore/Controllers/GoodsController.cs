@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using OnlineStore.Util;
 
 namespace OnlineStore.Controllers
 {
@@ -15,91 +14,83 @@ namespace OnlineStore.Controllers
     {
         private online_storeEntities db = new online_storeEntities();
 
-        // GET: Goods
+        //Главная страница витрины
         public ActionResult Index()
-        {
+        {   //Добавляем в модель список всех товаров
             return View(db.Goods.ToList());
         }
 
-        // GET: Goods/Details/5
+        //Получение детальной информации о товаре: Goods/Details/5
         public ActionResult Details(long? id)
-        {
+        {   //Проверяем Id
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            //Извлекам товар из БД
             Goods goods = db.Goods.Find(id);
-
+            //Если товар не найден, посылаем NotFound
             if (goods == null)
             {
                 return HttpNotFound();
             }
-
+            //Добавляем товар в модель и возвращаем страницу с детальной информацией
             return View(goods);
         }
 
-        // GET: Goods/Create
+        //Создавать товары может только администратор
         [Authorize(Roles ="ORA_DBA")]
+        //Получение страницы создания нового товара (GET): Goods/Create
         public ActionResult Create()
-        {
+        {   //Возвращаем страницу создания нового товара
             return View();
         }
 
-        // POST: Goods/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //Контроллер приемa данных с формы создания товара (POST): Goods/Create
         [HttpPost]
+        //Токен защиты формы от CSRF
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="ORA_DBA")]
+        //Создание товара на основе биндинга данных формы
         public ActionResult Create([Bind(Include = "goods_id,name,description,price")] Goods goods)
-        {
+        {   
             if (ModelState.IsValid)
-            {
+            {   //Сохраняем товар в БД
                 db.Goods.Add(goods);
                 db.SaveChanges();
+                //Перенаправляем на витрину
                 return RedirectToAction("Index");
             }
-
+            //Если модель не валидна, возвращаем обратно
             return View(goods);
         }
 
-        // GET: Goods/Edit/5
+        //Получение страницы редактирования товара (GET) : Goods/Edit/5
+        //Редактировать товары может только администратор
         [Authorize(Roles = "ORA_DBA")]
         public ActionResult Edit(long? id)
         {
-            if (!UserRoleChecker.IsUserAdmin())
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-            }
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            //Извлекаем товар из БД
             Goods goods = db.Goods.Find(id);
-
+            //Товар не найден
             if (goods == null)
             {
                 return HttpNotFound();
             }
-
+            //Отправляем на страницу редактирования
             return View(goods);
         }
 
-        // POST: Goods/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //Контроллер приемa данных с формы создания товара (POST): Goods/Create POST: Goods/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "ORA_DBA")]
         public ActionResult Edit([Bind(Include = "goods_id,name,description,price")] Goods goods)
         {
-            if (!UserRoleChecker.IsUserAdmin())
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-            }
 
             if (ModelState.IsValid)
             {
@@ -107,11 +98,12 @@ namespace OnlineStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             return View(goods);
         }
 
-        // GET: Goods/Delete/5
+        //Удаление товара (GET): Goods/Delete/5
+        //Удалять товары может только администратор
         [Authorize(Roles = "ORA_DBA")]
         public ActionResult Delete(long? id)
         {
@@ -130,13 +122,14 @@ namespace OnlineStore.Controllers
             return View(goods);
         }
 
-        // POST: Goods/Delete/5
+        //Контроллер подтверждения удаления товара (POST): Goods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "ORA_DBA")]
         public ActionResult DeleteConfirmed(long id)
-        {
+        {   
             Goods goods = db.Goods.Find(id);
+            //Удаляем товар из БД
             db.Goods.Remove(goods);
             db.SaveChanges();
 
