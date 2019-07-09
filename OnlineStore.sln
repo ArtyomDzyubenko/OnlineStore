@@ -5,15 +5,6 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore", "OnlineStore\OnlineStore.csproj", "{F5E3CDCC-1D1B-41F4-B0D9-387A6CB75757}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B228CC82-3562-4CD0-B12C-7F0E036D2717}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\Artyom\Desktop\База данных\online_store.bak = C:\Users\Artyom\Desktop\База данных\online_store.bak
-		C:\Users\Artyom\Desktop\База данных\online_store.mdf = C:\Users\Artyom\Desktop\База данных\online_store.mdf
-		C:\Users\Artyom\Desktop\База данных\online_store_log.ldf = C:\Users\Artyom\Desktop\База данных\online_store_log.ldf
-		C:\Users\Artyom\Desktop\База данных\Создание Базы данных.sql = C:\Users\Artyom\Desktop\База данных\Создание Базы данных.sql
-		C:\Users\Artyom\Desktop\База данных\Схема Базы данных.png = C:\Users\Artyom\Desktop\База данных\Схема Базы данных.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -175,6 +175,10 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="БАЗА ДАННЫХ\online_store.mdf" />
+    <Content Include="БАЗА ДАННЫХ\online_store_log.ldf" />
+    <Content Include="БАЗА ДАННЫХ\Создание Базы данных.sql" />
+    <Content Include="БАЗА ДАННЫХ\Схема Базы данных.png" />
     <EntityDeploy Include="Models\OnlineStoreDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OnlineStoreDataModel.Designer.cs</LastGenOutput>
@@ -212,6 +216,7 @@
     <Content Include="Views\Goods\Details.cshtml" />
     <Content Include="Views\Goods\Edit.cshtml" />
     <Content Include="Views\Goods\Index.cshtml" />
+    <Content Include="БАЗА ДАННЫХ\online_store.bak" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
