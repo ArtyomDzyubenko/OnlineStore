@@ -173,10 +173,8 @@
       <DependentUpon>OnlineStoreDataModel.edmx</DependentUpon>
       <LastGenOutput>OnlineStoreDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Создание Базы данных.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Схема Базы данных.png" />
     <EntityDeploy Include="Models\OnlineStoreDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OnlineStoreDataModel.Designer.cs</LastGenOutput>
